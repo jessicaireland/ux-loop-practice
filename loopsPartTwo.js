@@ -24,7 +24,8 @@
 */
 
 function addExerciseToRoutineForLoop(routine, exercise, numRepetitions) {
-    // Your Code Here!  Use a For loop, not a for-of loop.
+   for(let index = 0; index < numRepetitions; index++)
+   routine.push(exercise)
 }
 
 /* 
@@ -63,10 +64,19 @@ console.log(compareArray(routineOne, ["situp", "situp", "situp", "situp", "pushu
 function findMinimumAndMaximum(schedule) {
     let min = Number.POSITIVE_INFINITY;
     let max = 0;
-    // Your Code Here!
-    return [min, max];
-}
+     minValue = Infinity;
+    maxValue = -Infinity;
 
+    for(item of schedule){
+        if (item < minValue)
+        minValue = item;
+        if (item > maxValue)
+        maxValue = item;
+        return[minValue, maxValue]
+    
+}
+   return [min, max];
+    }
 /* 
    -------TESTS----------------------------------------------------------------
    Run these commands to make sure you did it right. They should all be true.
@@ -133,7 +143,13 @@ console.log(result[0] == 0 && result[1] == 10);
 
 function convertRoutineFromNewFormat(routineString) {
     let routine = [];
-    // Your Code Here!
+    let routineArray = routineString.split("|");
+    for (let i =0; i < routineArray.length; i++){
+        let itemArray = routineArray[i].split(":");
+        for (let count = 0; count < itemArray[0]; count++){
+            routine.push(itemArray[1]);
+        }
+    }
     return routine;
 }
 
@@ -202,10 +218,31 @@ console.log(compareArray(routineThree, [
 
 function calculateRoutineDifficulty(routine) {
     let difficulty = "";
-    // Your Code Here!
+    let total = 0
+    
+
+    for(let exercise of routine){
+        if(exersise==="situp"){
+            total = total + 1;
+        }else if(exercise==="legraise"){
+            total = total + 2;
+        }else if(exercise==="pushup"){
+            total = total + 4;
+        }else if(exercise==="pullup"){
+            total = total + 10;
+        }
+    }
     return difficulty;
 }
 
+    if (total < 30){
+        difficutly = "Easy"
+    }else if(total >=30 && total <60){
+        difficulty = "Hard"
+    }else if(total >= 60){
+        difficulty = "Insane"
+    }
+    console.log (difficulty);
 /* 
    -------TESTS---------------------------------------------------------------
    Run these commands to make sure you did it right. They should all be true.
